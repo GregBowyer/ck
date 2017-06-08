@@ -36,7 +36,7 @@ P_PWD=`pwd`
 MAINTAINER='sbahra@repnop.org'
 VERSION=${VERSION:-'1.0.0'}
 VERSION_MAJOR='0'
-BUILD="$PWD/build/ck.build"
+BUILD="$PWD/ck_build/ck.build"
 PREFIX=${PREFIX:-"/usr/local"}
 LDNAME="libck.so"
 LDNAME_VERSION="libck.so.$VERSION"
@@ -782,16 +782,16 @@ mkdir -p $P_PWD/src
 if test "$P_PWD" '!=' "$BUILD_DIR"; then
 	mkdir -p $P_PWD/regressions
 	cp $BUILD_DIR/regressions/Makefile.unsupported $P_PWD/regressions/Makefile &> /dev/null
-	cp $BUILD_DIR/build/ck.build.$PROFILE $P_PWD/build/ck.build.$PROFILE &> /dev/null
+	cp $BUILD_DIR/ck_build/ck.build.$PROFILE $P_PWD/ck_build/ck.build.$PROFILE &> /dev/null
 	cp $BUILD_DIR/include/ck_md.h $P_PWD/include/ck_md.h &> /dev/null
 fi
 
 generate src/Makefile.in $P_PWD/src/Makefile
 generate doc/Makefile.in $P_PWD/doc/Makefile
-generate build/ck.build.in $P_PWD/build/ck.build
-generate build/regressions.build.in $P_PWD/build/regressions.build
-generate build/ck.pc.in $P_PWD/build/ck.pc
-generate build/ck.spec.in $P_PWD/build/ck.spec
+generate ck_build/ck.build.in $P_PWD/build/ck.build
+generate ck_build/regressions.build.in $P_PWD/build/regressions.build
+generate ck_build/ck.pc.in $P_PWD/build/ck.pc
+generate ck_build/ck.spec.in $P_PWD/build/ck.spec
 generate Makefile.in $P_PWD/Makefile
 touch src/*.c
 echo "success"
